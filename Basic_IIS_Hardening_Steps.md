@@ -1,8 +1,3 @@
-[TOC]
-
-[[TOC]]
-
-
 # Instructions document for Hardening
 ## Disable Directory Browsing in IIS
 
