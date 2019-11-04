@@ -108,3 +108,58 @@ Also, search for the httpRuntime string in Web.Config and set the attribute enab
 One could also follow along this link to remove un wanted Server header. 
 https://blogs.msdn.microsoft.com/varunm/2013/04/23/remove-unwanted-http-response-headers/
 
+
+# Security Headers
+
+Security Headers provide a very powerful way to further harden your Web application. The following Security Headers should be added in your applications Web.Config file. 
+
+
+```
+<! — Start Security Headers →
+ <httpProtocol>
+ <customHeaders>
+ <add name=”X-XSS-Protection” value=”1; mode=block”/>
+ <add name=”Content-Security-Policy” value=”default-src ‘self’”/>
+ <add name=”X-frame-options” value=”SAMEORIGIN”/>
+ <add name=”X-Content-Type-Options” value=”nosniff”/>
+ <add name=”Referrer-Policy” value=”strict-origin-when-cross-origin”/>
+ <remove name=”X-Powered-By”/>
+ </customHeaders>
+ </httpProtocol>
+ <! — End Security Headers →
+ ```
+ 
+ Image URL
+ https://cdn-images-1.medium.com/max/800/1*3AgIok349W9tvYMrnSdPww.png
+ 
+ 
+ 
+ This is how Security headers are added in Code.
+ 
+ app.UseHsts(hsts => hsts.MaxAge(365).IncludeSubdomains());
+ app.UseXContentTypeOptions();
+ app.UseReferrerPolicy(opts => opts.NoReferrer());
+ app.UseXXssProtection(options => options.EnabledWithBlockMode());
+ app.UseXfo(options => options.Deny());
+
+app.UseCsp(opts => opts
+ .BlockAllMixedContent()
+ .StyleSources(s => s.Self())
+ .StyleSources(s => s.UnsafeInline())
+ .FontSources(s => s.Self())
+ .FormActions(s => s.Self())
+ .FrameAncestors(s => s.Self())
+ .ImageSources(s => s.Self())
+ .ScriptSources(s => s.Self())
+ );
+ //End Security Headers
+
+
+ 
+ 
+ # References:
+ https://medium.com/@shehackspurple/security-headers-1c770105940b
+ https://damienbod.com/2018/02/08/adding-http-headers-to-improve-security-in-an-asp-net-mvc-core-application/
+ 
+ 
+ 
