@@ -1,3 +1,4 @@
+
 # Instructions document for Hardening
 ## Disable Directory Browsing in IIS
 
@@ -128,6 +129,28 @@ Security Headers provide a very powerful way to further harden your Web applicat
  </httpProtocol>
  <! — End Security Headers →
  ```
+ 
+ 
+# Host Header Remediation
+Host Header detailed description about what is it and how it is exploited can be seen at the URL. 
+https://www.acunetix.com/blog/articles/automated-detection-of-host-header-attacks/
+
+For remediation on IIS, follow the below steps.
+
+1. In IIS, click the **Website** you need to change. 
+2. In the **ACTIONS** Tab, click **BINDINGS**
+3. Click ADD or Choose the list item and click EDIT.
+4. Make sure, you specify the **HostName** to Website or Domain name being called. 
+5. Choose **SSL Certificate** as per need. Normally you would choose the Certificate binded with your Website. 
+6. Click **OK** to close this dialog box
+7. Repeat Steps 3 to 6 if you want another HOST Header. Normally, you would choose this if you have a one Website, and you would like to call it by different URLs.
+8. Click **Close** to finish off the settings and 
+9. Got to Command line by **"Windows + R"** followed by type **"CMD"**. 
+10. Type **"IISRESET"** to restart the IIS with the new settings. 
+
+**PS:** Command line for the same is 
+appcmd set site /site.name:"digicert.com" /+bindings.[protocol='https',bindingInformation='*:443:digicert.com']
+
  
  Image URL
  https://cdn-images-1.medium.com/max/800/1*3AgIok349W9tvYMrnSdPww.png
