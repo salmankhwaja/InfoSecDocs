@@ -1,3 +1,21 @@
+- [Instructions document for Hardening](#instructions-document-for-hardening)
+  * [Disable Directory Browsing in IIS](#disable-directory-browsing-in-iis)
+  * [Disable OPTIONS and TRACE METHOD in IIS and Enable Get / Post / Head.](#disable-options-and-trace-method-in-iis-and-enable-get---post---head)
+  * [Enable X-Frame-Options in IIS.](#enable-x-frame-options-in-iis)
+  * [Enable XSS-Protection in IIS.](#enable-xss-protection-in-iis)
+  * [Enable Content-Security-Policy in IIS.](#enable-content-security-policy-in-iis)
+  * [Enable Stirct-Transport-Security in IIS.](#enable-stirct-transport-security-in-iis)
+  * [Enable X-Content-Type-Options in IIS.](#enable-x-content-type-options-in-iis)
+  * [Suppress Web Server in IIS.](#suppress-web-server-in-iis)
+  * [Disable Default IIS document in IIS.](#disable-default-iis-document-in-iis)
+  * [Check your headers.](#check-your-headers)
+- [Security Headers](#security-headers)
+- [Host Header Remediation](#host-header-remediation)
+- [References:](#references-)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
+
 
 # Instructions document for Hardening
 ## Disable Directory Browsing in IIS
@@ -6,7 +24,7 @@
 2. In features view ,double click **Directory browsing**
 3. In the Actions pane, click **Disable** if the Directory Browsing feature is enabled.
 
-## Disable OPTIONS and TRACE METHOD in IIS and Enable Get, Post, Head.
+## Disable OPTIONS and TRACE METHOD in IIS and Enable Get / Post / Head.
 
 1. Open IIS manager and navigate to the level you to manage
 2. In features view ,double click **Request Filtering**
