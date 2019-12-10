@@ -109,6 +109,14 @@ From https://www.greytrix.com/blogs/sagecrm/2013/03/29/how-to-restrict-users-fro
 and 
 https://docs.microsoft.com/en-us/iis/web-hosting/web-server-for-shared-hosting/default-documents
 
+# Cookies (Secure only / Http only)
+The application cookies needs to be set as SECURE and HttpOnly Flag. The following line is to be added in Web.Config to make the Cookies Secure.
+The line below is quite relaxed, but will make the cookies Secure and HTTPOnly.
+Add this line within Web.config  within <system.web>:
+
+```
+<httpCookies httpOnlyCookies="true" requireSSL="true" />
+```
 
 ## Check your headers. 
 lastly check your headers from https://securityheaders.io/. 
