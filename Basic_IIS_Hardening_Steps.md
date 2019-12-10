@@ -8,12 +8,14 @@
   * [Enable X-Content-Type-Options in IIS.](#enable-x-content-type-options-in-iis)
   * [Suppress Web Server in IIS.](#suppress-web-server-in-iis)
   * [Disable Default IIS document in IIS.](#disable-default-iis-document-in-iis)
+- [Cookies (Secure only / Http only)](#cookies--secure-only---http-only-)
   * [Check your headers.](#check-your-headers)
 - [Security Headers](#security-headers)
 - [Host Header Remediation](#host-header-remediation)
 - [References:](#references-)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
 
 
 
