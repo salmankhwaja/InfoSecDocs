@@ -3,6 +3,7 @@
   * [Disable OPTIONS and TRACE METHOD in IIS and Enable Get / Post / Head.](#disable-options-and-trace-method-in-iis-and-enable-get---post---head)
   * [Enable X-Frame-Options in IIS.](#enable-x-frame-options-in-iis)
   * [Enable XSS-Protection in IIS.](#enable-xss-protection-in-iis)
+  * [Configure Custom Error pages in IIS.](#configure-custom-error-pages-in-iis)
   * [Enable Content-Security-Policy in IIS.](#enable-content-security-policy-in-iis)
   * [Enable Stirct-Transport-Security in IIS.](#enable-stirct-transport-security-in-iis)
   * [Enable X-Content-Type-Options in IIS.](#enable-x-content-type-options-in-iis)
@@ -54,6 +55,26 @@
 5. In the dialog box that appears, type **X-XSS-Protection** in the Name field and type **1; mode=block** in the Value field.
 6. Click **OK** to save your changes.
 7. Run **Command line** from Administrator and then issue **"IISRESET"** to restart the IIS
+
+## Configure Custom Error pages in IIS.
+Follow the Steps listed in this link. 
+https://docs.microsoft.com/en-us/iis/configuration/system.webserver/httperrors/
+
+1. In the Connections pane, expand the server name, expand **Sites**, and then navigate to the **Web site or application** that you want to configure custom error pages for.
+2. In the Home pane, double-click **Error Pages**.
+3. In the Actions pane, click **Add...**
+4. In the Add Custom Error Page dialog box, under **Status code**, type the **number of the HTTP status code** for which you want to create a custom error message.
+5. In the **Response Action section**, do **one** of the following:
+   a. Select **Insert content from static file** into the error response to serve static content, for example, an .html file, for the custom error.
+   b. Select **Execute a URL** on this site to serve dynamic content, for example, an .asp file for the custom error.
+   c. Select **Respond with a 302 redirect** to redirect client browsers to a different URL that contains the custom error file.
+6. In the File path text box, **type the path of the custom error page** if you chose Insert content from static file into the error response or the **URL of the custom error page** if you use either the Execute a URL on this site or Respond with a **302 redirect**, and then click **OK**.
+
+One command line for this work to be performed is
+```
+appcmd.exe set config -section:system.webServer/httpErrors /+"[statusCode='404',subStatusCode='5',prefixLanguageFilePath='%SystemDrive%\inetpub\custerr',path='404.5.htm']" 
+/commit:apphost
+```
 
 
 ## Enable Content-Security-Policy in IIS.
