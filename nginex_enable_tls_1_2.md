@@ -1,4 +1,4 @@
-# Enable TLS 1.3 in nginx
+# Enable TLS 1.3 in nginx and remidiate Lucky13 vulnerability.
 
 1. Now start, enable and verify the nginx installation.
 ```
@@ -38,4 +38,13 @@ server {
 ```
 # nginx -t
 # systemctl reload nginx.service
+```
+
+
+In other words, you have to locate the correct configuration file for nginex Website, and add the foloowing snippet. This will also remidaite the Lucky13 vulnerability in nginex.
+
+```
+ssl_protocols TLSv1.2;
+ssl_ciphers 'ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256';
+ssl_prefer_server_ciphers on;
 ```
