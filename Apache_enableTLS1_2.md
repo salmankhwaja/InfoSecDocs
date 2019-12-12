@@ -49,3 +49,6 @@ SSLCertificateChainFile /pathtokey/chain.pem
 # httpd -t
 # systemctl reload httpd.service
 ```
+
+
+Read https://ssl-config.mozilla.org/ for further details if needed
