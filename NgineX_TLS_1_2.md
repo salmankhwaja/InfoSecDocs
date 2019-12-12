@@ -6,7 +6,8 @@
 # systemctl enable nginx.service
 # systemctl status nginx.service
 ```
-2. Open the nginx vhost configuration **/etc/nginx/conf.d/example.com.conf** file using your favorite editor.
+
+2. Open the nginx vhost configuration **/etc/nginx/conf.d/example.com.conf** file using your favorite editor. Substitute your site name with **example.com**
 
 ```
 # vi /etc/nginx/conf.d/example.com.conf
