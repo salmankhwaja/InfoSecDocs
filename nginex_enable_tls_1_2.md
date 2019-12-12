@@ -1,4 +1,4 @@
-# Enable TLS 1.3 in nginx and remidiate Lucky13 vulnerability.
+# Enable TLS 1.2 in nginx and remediate Lucky13 vulnerability.
 
 1. Now start, enable and verify the nginx installation.
 ```
