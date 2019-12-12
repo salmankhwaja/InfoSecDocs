@@ -8,6 +8,9 @@
   * [Enable Stirct-Transport-Security in IIS.](#enable-stirct-transport-security-in-iis)
   * [Enable X-Content-Type-Options in IIS.](#enable-x-content-type-options-in-iis)
   * [Suppress Web Server in IIS.](#suppress-web-server-in-iis)
+  * [Remove ASP.NET Version, Server Verion and Other un wanted headers.](#remove-aspnet-version--server-verion-and-other-un-wanted-headers)
+    + [Remove ASP.NET 4.5](#remove-aspnet-45)
+    + [Removing X-Powered-By Header.](#removing-x-powered-by-header)
   * [Disable Default IIS document in IIS.](#disable-default-iis-document-in-iis)
 - [Cookies (Secure only / Http only)](#cookies--secure-only---http-only-)
   * [Check your headers.](#check-your-headers)
@@ -16,6 +19,7 @@
 - [References:](#references-)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
 
 
 
