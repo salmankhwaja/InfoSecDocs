@@ -121,6 +121,32 @@ https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
 6. Remove it by clicking **REMOVE** from the actions pane
 7. Run Command line from Administrator and then issue "IISRESET" to restart the IIS
 
+## Remove ASP.NET Version, Server Verion and Other un wanted headers. 
+Detailed instructions provided here. 
+https://blog.insiderattack.net/configuring-secure-iis-response-headers-in-asp-net-mvc-b38369030728
+
+### Remove ASP.NET 4.5
+1. Open the Web.Config file, 
+2. find the node **<httpRuntime>** under **<system.web>** 
+3. add the **enableVersionHeader** attribute to **httpRuntime** node and set it to **false**.
+ 
+ <httpRuntime maxRequestLength="4096" targetFramework="4.5" enableVersionHeader="false"/>
+
+### Removing X-Powered-By Header.
+
+1. Open the Web.Config file, 
+2. find the <httpProtocol> node under the <system.webServer> node. 
+3. Check whether these is a child node under <httpProtocol> called <customHeaders>. By default in MVC, you will not see this customHeaders child node. If it does not exist, create a <cusstomHeaders> node and add following include following to remove X-Powered-By header.
+ 
+```
+<httpProtocol> 
+ <customHeaders> 
+  <remove name="X-Powered-By"/>
+ </customHeaders> 
+</httpProtocol>
+```
+
+
 ## Disable Default IIS document in IIS.
 
 1. In Run, type **“inetmgr”**. This will open IIS.
