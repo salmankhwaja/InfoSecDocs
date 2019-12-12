@@ -1,7 +1,6 @@
-# Enable TLS 1.3 in Apache
+# Enable TLS 1.2 in Apache
 
 1. Open your Apache virtual host configuration file. 
-
 
 ```
 # vi /etc/httpd/conf.d/vhost.conf
@@ -49,6 +48,5 @@ SSLCertificateChainFile /pathtokey/chain.pem
 # httpd -t
 # systemctl reload httpd.service
 ```
-
 
 Read https://ssl-config.mozilla.org/ for further details if needed
