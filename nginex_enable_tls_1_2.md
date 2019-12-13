@@ -1,4 +1,4 @@
-# Enable TLS 1.2 in nginx and remediate Lucky13 vulnerability.
+# Enable TLS 1.2 in nginx and remediation of Lucky13 vulnerability.
 
 1. Enable and verify the nginx installation.
 ```
@@ -40,7 +40,7 @@ server {
 # systemctl reload nginx.service
 ```
 
-In other words, one has to **locate the correct configuration file for nginex Website**, and add the following **snippet**. This will also remidaite the Lucky13 vulnerability in nginex.
+In other words, one has to **locate the correct configuration file for nginex Website**, and add the following **snippet**. This will also remedaite the Lucky13 vulnerability in nginex.
 
 ```
 ssl_protocols TLSv1.2;
@@ -48,7 +48,7 @@ ssl_ciphers 'ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECD
 ssl_prefer_server_ciphers on;
 ```
 
-## Referencnes 
+## References 
 
 - https://ssl-config.mozilla.org/ 
 - https://wiki.crashtest-security.com/prevent-ssl-lucky13
