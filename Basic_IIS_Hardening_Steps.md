@@ -15,10 +15,12 @@
 - [Cookies (Secure only / Http only)](#cookies--secure-only---http-only-)
   * [Check your headers.](#check-your-headers)
 - [Security Headers](#security-headers)
+- [Disable ViewState in Asp.NET Pages](#disable-viewstate-in-aspnet-pages)
 - [Host Header Remediation](#host-header-remediation)
 - [References:](#references-)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
 
 
 
@@ -208,7 +210,16 @@ Security Headers provide a very powerful way to further harden your Web applicat
  </httpProtocol>
  <! — End Security Headers →
  ```
- 
+# Disable ViewState in Asp.NET Pages
+1. Open desired Web.Config file and go to <system.web> tag.
+2. Add the following tag in <system.web>
+
+```
+<system.web>
+ <page enableViewStateMac="true" viewStateEncryptionMode="Always">
+ </pages>
+</system.web>
+ ```
  
 # Host Header Remediation
 Host Header detailed description about what is it and how it is exploited can be seen at the URL. 
