@@ -220,6 +220,8 @@ Security Headers provide a very powerful way to further harden your Web applicat
  </pages>
 </system.web>
  ```
+ 3. ReStart the Webserver by issuing "cmd" from command line and issues "IISRESET" from Administrator command prompt.
+ 
  
 # Host Header Remediation
 Host Header detailed description about what is it and how it is exploited can be seen at the URL. 
