@@ -33,7 +33,7 @@ Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\LanmanServer\Par
 ```
 
 ### For Windows Vista, Windows Server 2008, Windows 7, Windows Server 2008 R2, Windows 8, and Windows Server 2012
-
+```
 Win + R (in run dialog copy paste the following command to open Powershell as Administrator)
 
 powershell -Command "Start-Process PowerShell –Verb RunAs" 
