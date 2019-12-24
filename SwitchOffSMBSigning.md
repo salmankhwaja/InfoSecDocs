@@ -2,7 +2,7 @@
 
 This guide is made for switching off SMB Signing in different Operating Systems. Please do keep in mind, that general windows Adminsitration is required to do these tasks. 
 
-nsure that the windows is updated with MS17-010. If this update is not installed, Microsoft provides a temporary workaround to disable the SMB Protocol. Disabling this protocol will impact the functionality of file sharing. The procedure for disabling SMB protocol is listed below.
+Ensure that the windows is updated with <a href="https://technet.microsoft.com/en-us/library/security/ms17-010.aspx">MS17-010</a>. If this update is not installed, Microsoft provides a temporary workaround to disable the SMB Protocol. Disabling this protocol will impact the functionality of file sharing. The procedure for disabling SMB protocol is listed below.
 
 ### For Windows 8 and Windows Server 2012
 ```
@@ -74,7 +74,7 @@ On Windows Clients  (Windows 7, 8, 8.1, 10)
 
 <img src = "https://tpsappsecaware.files.wordpress.com/2017/05/capture.png?w=525">
 
-Note, Microsoft provides this fix as a TEMPORARY fix to combat against WannaCry. 
+Note, Microsoft provides this fix as a <a href="https://technet.microsoft.com/en-us/library/security/ms17-010.aspx">TEMPORARY fix </a> to combat against WannaCry. 
 Keep your Windows Updated with Microsoft patches / service packs. They will soon be followed by permanent fix.
 
 From:
