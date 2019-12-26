@@ -1,6 +1,6 @@
 # How to switch off SMB Signing 
 
-This guide is made for switching off SMB Signing in different Operating Systems. Please do keep in mind, that general windows Adminsitration is required to do these tasks. 
+This guide is made for switching off SMB Signing in different Windows Operating Systems. Please do keep in mind, that general windows Adminsitration is required to do these tasks. 
 
 Ensure that the windows is updated with <a href="https://technet.microsoft.com/en-us/library/security/ms17-010.aspx">MS17-010</a>. If this update is not installed, Microsoft provides a temporary workaround to disable the SMB Protocol. Disabling this protocol will impact the functionality of file sharing. The procedure for disabling SMB protocol is listed below.
 
