@@ -10,6 +10,9 @@
   * [Suppress Web Server in IIS.](#suppress-web-server-in-iis)
   * [Remove ASP.NET Version, Server Verion and Other un wanted headers.](#remove-aspnet-version--server-verion-and-other-un-wanted-headers)
     + [Remove ASP.NET 4.5](#remove-aspnet-45)
+    + [Disable ASP.NET debug feature (http-asp-dot-net-debug)](#disable-aspnet-debug-feature--http-asp-dot-net-debug-)
+      - [Modify the Web.config File](#modify-the-webconfig-file)
+      - [Modify the Machine.config File](#modify-the-machineconfig-file)
     + [Removing X-Powered-By Header.](#removing-x-powered-by-header)
   * [Disable Default IIS document in IIS.](#disable-default-iis-document-in-iis)
 - [Cookies (Secure only / Http only)](#cookies--secure-only---http-only-)
@@ -20,6 +23,7 @@
 - [References:](#references-)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
 
 
 
@@ -137,6 +141,43 @@ https://blog.insiderattack.net/configuring-secure-iis-response-headers-in-asp-ne
 3. add the **enableVersionHeader** attribute to **httpRuntime** node and set it to **false**.
  
  <httpRuntime maxRequestLength="4096" targetFramework="4.5" enableVersionHeader="false"/>
+
+### Disable ASP.NET debug feature (http-asp-dot-net-debug)
+
+Detailed instructions are @ https://support.microsoft.com/en-us/help/815157/how-to-disable-debugging-for-asp-net-applications
+
+To disable debugging, modify either the **Web.config file** or the **Machine.config file**, as detailed in the following steps.
+#### Modify the Web.config File
+To enable debugging, add the compilation element to the Web.config file of the application. The Web.config file is located in the application directory. To do this, follow these steps:
+
+1. Open the Web.config file in a text editor such as Notepad.exe. Web.config file is typically located in the application directory.
+2. In the Web.config file, locate the **compilation** element. Debugging is enabled when the debug attribute in the compilation element is set to true.
+3. Modify the debug attribute to false, and then save the Web.config file to **disable debugging** for that application.
+
+   The following code sample shows the compilation element with debug set to false:
+   ```
+   <compilation 
+       debug="false"
+   />
+   ```
+4. Save the Web.config file. The ASP.NET application automatically restarts.
+
+#### Modify the Machine.config File
+You can also enable debugging for all applications on a system by modifying the Machine.config file. To confirm that debugging has not been enabled in the Machine.config file, follow these steps.
+
+1. Open the Machine.config file in a text editor such as Notepad.exe. The Machine.config file is typically located in the following folder:
+%SystemRoot%\Microsoft.NET\Framework\%VersionNumber%\CONFIG\
+2. In the Machine.config file, locate the **compilation** element. Debugging is enabled when the debug attribute in the compilation element is set to true.
+If the debug attribute is true, change the debug attribute to false.
+3. The following code sample shows the compilation element with debug set to false:
+
+  ```
+  <compilation 
+    debug="false"
+  />
+  ```
+4. Save the Machine.config file.
+
 
 ### Removing X-Powered-By Header.
 
