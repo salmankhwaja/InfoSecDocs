@@ -1,6 +1,17 @@
 # Install Certificate in Windows OS
 This post is continuation of move from HTTP to HTTPS series. This post won’t go into the details of how to generate CSR, and submitting the request to Certificate Authority. The process is straight forward.
 
+
+- [Install Certificate in Windows OS](#install-certificate-in-windows-os)
+    + [Convert Certificate files to PFX File](#convert-certificate-files-to-pfx-file)
+    + [Install PFX Certificate in Web Server](#install-pfx-certificate-in-web-server)
+    + [Install Intermediate Certificates by Certificate Authorities (Optional)](#install-intermediate-certificates-by-certificate-authorities--optional-)
+    + [Bind installed Certificates to Default Website / IIS](#bind-installed-certificates-to-default-website---iis)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
+
+
 One has to generate the CSR (Certificate Signing Request) for the Server. The key thing to keep in mind is to match the Server Name. (See this post on generating CSR)
 Then that CSR is submitted to Certificate Authority to provide Certificate.
 Certificate Authority generates the Certificate (either through domain validation or Organization Validation, depending on cost) and provide it over Email / Upload to FTP.
@@ -8,10 +19,6 @@ Those Certificates along with Intermediate Certificates are then installed on We
 Once installed, we need to bind the Certificate with the Web Site.
 This post discusses the steps 4 – 5 mentioned above. Following are the 4 steps one needs to take if they have received the Certificate from Certificate Authority.
 
-## Convert Certificate files to PFX file.
-## Install PFX Certificate in Web Server Machine
-## Install Intermediate Certificates by Certificate Authorities. (Optional)
-## Bind installed Certificates to default Website / IIS
 Lastly, CONFIRM if everything is all SET.
 
 Ready. Set. Let’s dive in.
