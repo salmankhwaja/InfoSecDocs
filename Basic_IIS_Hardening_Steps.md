@@ -20,6 +20,7 @@
 - [Security Headers](#security-headers)
 - [Disable ViewState in Asp.NET Pages](#disable-viewstate-in-aspnet-pages)
 - [Host Header Remediation](#host-header-remediation)
+- [Adding Content Security Policy](#adding-content-security-policy)
 - [References:](#references-)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
@@ -287,7 +288,41 @@ appcmd set site /site.name:"digicert.com" /+bindings.[protocol='https',bindingIn
  
  Image URL
  https://cdn-images-1.medium.com/max/800/1*3AgIok349W9tvYMrnSdPww.png
- 
+
+
+
+
+# Adding Content Security Policy
+Content Security Policy is the header which is applied in applications. With this policy in place, application developers could enable / disable many areas of their Web site to be executed in browser environment. Things like Links, Cross Links, Images, JavaScripts, resources lying in their server and / or in partner's Servers. In other words, it allows to define a policy to run on major browsers, which will be a defense mechanism for Websites. 
+
+More details here. https://content-security-policy.com/
+
+For remediation on IIS, follow the below steps.
+
+1. Open **Internet Information Services (IIS)** Manager. START > RUN > inetmgr
+2. In the Connections pane on the left side, expand the Sites folder and select the site that you want to protect.
+3. Double-click the **HTTP Response Headers** icon in the feature list in the middle.
+4. In the Actions pane on the right side, click **Add**.
+5. Add the following key value pairs one by one repeating 4 and 5.
+
+    Content-Security-Policy 
+    default-src 'self'; connect-src 'self'; font-src 'self'; img-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; object-src 'none'
+
+    X-Content-Security-Policy
+    default-src 'self'; connect-src 'self'; font-src 'self'; img-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; object-src 'none'
+
+    X-WebKit-CSP
+    default-src 'self'; connect-src 'self'; font-src 'self'; img-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; object-src 'none'
+
+
+6. Click OK to save your changes.
+7. Run Command line from Administrator and then issue "IISRESET" to restart the IIS
+
+**PS:** Command line for the same is 
+appcmd set site /site.name:"digicert.com" /+bindings.[protocol='https',bindingInformation='*:443:digicert.com']
+
+
+
  
  
  This is how Security headers are added in Code.
