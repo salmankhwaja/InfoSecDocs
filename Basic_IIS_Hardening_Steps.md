@@ -247,6 +247,7 @@ Security Headers provide a very powerful way to further harden your Web applicat
  <add name=”X-frame-options” value=”SAMEORIGIN”/>
  <add name=”X-Content-Type-Options” value=”nosniff”/>
  <add name=”Referrer-Policy” value=”strict-origin-when-cross-origin”/>
+ <add name=”Cache-Control" value="no-store, no-cache, must-revalidate"/>
  <remove name=”X-Powered-By”/>
  </customHeaders>
  </httpProtocol>
