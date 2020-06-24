@@ -54,3 +54,68 @@ On Reboot, all
 2. TLS 1.0 and 1.1 would be switched off
 3. TLS 1.2 would be switched on 
 4. All cipher suites would be re-ordered as per forward secracy
+
+## How to check if SSL, TLS 1.0, TLS 1.1, TLS 1.2 are enabled or disabled ?
+
+To disable the PCT 1.0 protocol so that IIS does not try to negotiate using the PCT 1.0 protocol, follow these steps:
+
+1. Click Start, click Run, type regedt32 or type regedit, and then click OK.
+In Registry Editor, locate the following registry key:
+2. HKey_Local_Machine\System\CurrentControlSet\Control\SecurityProviders \SCHANNEL\Protocols\PCT 1.0\Server
+3. On the Edit menu, click Add Value.
+4. In the Data Type list, click DWORD.
+5. In the Value Name box, type Enabled, and then click OK.
+
+Note If this value is present, double-click the value to edit its current value.
+Type 00000000 in Binary Editor to set the value of the new key equal to "0".
+
+6. Click OK. Restart the computer.
+
+
+1. On the Windows server, open the Registry Editor (regedit.exe) and run it as administrator.
+2. In the Registry Editor window, go to: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\Schannel\Protocols\
+3. Note: If the key SSL 3.0 is already existing, skip steps 3 and 4.
+In the navigation tree, right-click on Protocols, and in the pop-up menu, click New > Key.
+4. Name the key, SSL 3.0.
+5. In the navigation tree, right-click on the new SSL 3.0 key that you just created, and in the pop-up menu, click New > Key. Name the key Client.
+5. Right-click on Client, and in the pop-up menu, click New > DWORD (32-bit) Value.
+6. Name the value DisabledByDefault. Double-click the DisabledByDefault DWORD value and in the Edit DWORD (32-bit) Value window, in the Value Data box change the value to 1 and then click OK.
+7. In the navigation tree, right-click on the SSL 3.0 key again, and in the pop-up menu, click New > Key. Name the key Server.
+8. Right-click on Server, and in the pop-up menu, click New > DWORD (32-bit) Value. Name the value Enabled. 
+9. Double-click the Enabled DWORD value and in the Edit DWORD (32-bit) Value window, in the Value Data box leave the value at 0 and then, click OK.
+10. Restart your Windows server.
+
+
+Below are the key combinations for disabling the SSL 2.0, SSL 3.0 and TLS 1.0 protocols on Windows 10 or Windows 2012 server.
+
+## For SSL 2.0
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\Schannel\Protocols\SSL 2.0\Client]
+"DisabledByDefault"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\Schannel\Protocols\SSL 2.0\Server]
+"Enabled"=dword:00000000
+ 
+
+### For SSL 3.0
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\Schannel\Protocols\SSL 3.0\Client]
+"DisabledByDefault"=dword:00000001
+ 
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\Schannel\Protocols\SSL 3.0\Server]
+"Enabled"=dword:00000000
+
+### For TLS 1.0
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\Schannel\Protocols\TLS 1.0\Client]
+"DisabledByDefault"=dword:00000001
+ 
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\Schannel\Protocols\TLS 1.0\Server]
+"Enabled"=dword:00000000
+
+Note: Client portion contains subkey called "DisabledByDefault" whereas the Server portion contains subkey called "Enabled"
+
+
+References: 
+https://support.microsoft.com/en-us/help/187498/how-to-disable-pct-1-0-ssl-2-0-ssl-3-0-or-tls-1-0-in-internet-informat
+
+https://www.venafi.com/education-center/ssl/how-to-check-ssl-certificate#:~:text=Click%20the%20padlock%20icon%20in,the%20SSL%20certificate%20is%20current
