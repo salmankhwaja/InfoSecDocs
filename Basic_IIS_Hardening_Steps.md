@@ -16,6 +16,7 @@
     + [Removing X-Powered-By Header.](#removing-x-powered-by-header)
   * [Disable Default IIS document in IIS.](#disable-default-iis-document-in-iis)
 - [Cookies (Secure only / Http only)](#cookies--secure-only---http-only-)
+- [Secure Cookies with root path](#Secure--Cookies--with--root--path)
   * [Check your headers.](#check-your-headers)
 - [Security Headers](#security-headers)
 - [Disable ViewState in Asp.NET Pages](#disable-viewstate-in-aspnet-pages)
@@ -214,6 +215,20 @@ Add this line within Web.config  within <system.web>:
 ```
 <httpCookies httpOnlyCookies="true" requireSSL="true" />
 ```
+
+# Secure Cookies with root path
+
+Root path is generally added in cookies to make cookies for that particular path / domain. Best approach is to use the path directive and domain directive.
+
+```
+<httpCookies httpOnlyCookies="true" requireSSL="true" path="/" domain="xyz.*.com" />
+```
+Read the following links for further understanding
+
+https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie
+https://wiki.owasp.org/index.php/Testing_for_cookies_attributes_(OTG-SESS-002)
+https://headmelted.com/securing-asp-net-cookies-a1e1b1648ed
+
 
 ## Check your headers. 
 lastly check your headers from https://securityheaders.io/. 
