@@ -16,7 +16,7 @@
     + [Removing X-Powered-By Header.](#removing-x-powered-by-header)
   * [Disable Default IIS document in IIS.](#disable-default-iis-document-in-iis)
 - [Cookies (Secure only / Http only)](#cookies--secure-only---http-only-)
-- [Secure Cookies with root path](#Secure--Cookies--with--root--path)
+- [Secure Cookies with root path](#secure-cookies-with-root-path)
   * [Check your headers.](#check-your-headers)
 - [Security Headers](#security-headers)
 - [Disable ViewState in Asp.NET Pages](#disable-viewstate-in-aspnet-pages)
@@ -25,10 +25,6 @@
 - [References:](#references-)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
-
-
-
-
 
 
 
