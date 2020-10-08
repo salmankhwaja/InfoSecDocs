@@ -14,7 +14,7 @@
 Apache is web server, which is generally controlled by it's config file. The following are the assumptions I will be making in this guide. 
 - You know where is your Apache configuration file. 
   - Main Configuration file: /etc/httpd/conf/httpd.conf (RHEL/CentOS/Fedora) and /etc/apache2/apache2.conf (Debian/Ubuntu).
-  - Main Configuration file Windows: 
+  - Main Configuration file Windows:  C:/Apache/Apache/conf/httpd.conf  (Generally this is the default location, if installation is done with default values) 
 
 Edit the Apache Configuration file using these commands. 
 
