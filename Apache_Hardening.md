@@ -1,6 +1,6 @@
 # Apache Hardening Instructions.
 
-- [Apache Hardening Insturctions.](#apache-hardening-insturctions)
+- [Apache Hardening Instructions.](#apache-hardening-instructions)
     + [Add the Popular Security Headers to Apache Server configuration](#add-the-popular-security-headers-to-apache-server-configuration)
     + [Disable HTTP 1.0 Protocol](#disable-http-10-protocol)
     + [Disable Apache server giving our information about which modules are loaded.](#disable-apache-server-giving-our-information-about-which-modules-are-loaded)
@@ -10,6 +10,8 @@
     + [Securing Apache with SSL Certificates](#securing-apache-with-ssl-certificates)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
+
 
 Apache is web server, which is generally controlled by it's config file. The following are the assumptions I will be making in this guide. 
 - You know where is your Apache configuration file. 
