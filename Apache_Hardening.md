@@ -1,4 +1,4 @@
-# Apache Hardening Insturctions.
+# Apache Hardening Instructions.
 
 - [Apache Hardening Insturctions.](#apache-hardening-insturctions)
     + [Add the Popular Security Headers to Apache Server configuration](#add-the-popular-security-headers-to-apache-server-configuration)
