@@ -6,7 +6,7 @@
     + [Disable Apache server giving our information about which modules are loaded.](#disable-apache-server-giving-our-information-about-which-modules-are-loaded)
     + [Use An Appropriate User and Group](#use-an-appropriate-user-and-group)
     + [Disable Directory Listing in Apache](#disable-directory-listing-in-apache)
-    + [Use Mod_Security and Mod_Evasive Modules to secure Server. (Addvanced)](#use-mod-security-and-mod-evasive-modules-to-secure-server--addvanced-)
+    + [Use Mod_Security and Mod_Evasive Modules to secure Server. (Advanced)](#use-mod-security-and-mod-evasive-modules-to-secure-server--advanced-)
     + [Securing Apache with SSL Certificates](#securing-apache-with-ssl-certificates)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
@@ -106,7 +106,7 @@ For anyone curious to find out more about Apache Hardening, please do browse thr
 - https://htaccessbook.com/important-security-headers/
 
 
-### Use Mod_Security and Mod_Evasive Modules to secure Server. (Addvanced)
+### Use Mod_Security and Mod_Evasive Modules to secure Server. (Advanced)
  Where mod_security works as a firewall for our web applications and allows us to monitor traffic on a real time basis. It also helps us to protect our websites or web server from brute force attacks. You can simply install mod_security on your server with the help of your default package installers.
 
  Install mod_security on Ubuntu/Debian
