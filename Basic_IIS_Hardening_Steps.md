@@ -271,9 +271,18 @@ Security Headers provide a very powerful way to further harden your Web applicat
 ```
 <system.web>
  <page enableViewStateMac="true" viewStateEncryptionMode="Always">
- </pages>
+ </pages> 
 </system.web>
  ```
+ or 
+ ```
+ <system.web>
+ <pages enableViewState="false" />
+ </system.web>
+ ```
+ 
+ 
+ 
  3. ReStart the Webserver by issuing "cmd" from command line and issues "IISRESET" from Administrator command prompt.
  
  
