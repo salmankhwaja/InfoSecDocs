@@ -4,7 +4,7 @@
   * [Enable X-Frame-Options in IIS.](#enable-x-frame-options-in-iis)
   * [Enable XSS-Protection in IIS.](#enable-xss-protection-in-iis)
   * [Configure Custom Error pages in IIS.](#configure-custom-error-pages-in-iis)
-  * [Implement Secure Reffer Policy](#implement-secure-reffer-policy)
+  * [Implement Secure Referrer Policy](#implement-secure-Referrer-policy)
   * [Enable Content-Security-Policy in IIS.](#enable-content-security-policy-in-iis)
   * [Enable Stirct-Transport-Security in IIS.](#enable-stirct-transport-security-in-iis)
   * [Enable X-Content-Type-Options in IIS.](#enable-x-content-type-options-in-iis)
@@ -89,8 +89,8 @@ appcmd.exe set config -section:system.webServer/httpErrors /+"[statusCode='404',
 ```
 
 
-## Implement Secure Reffer Policy
-The documentation for reffer policy is @ https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy. It should be implemented using HTTP Headers. 
+## Implement Secure Referrer Policy
+The documentation for Referrer policy is @ https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy. It should be implemented using HTTP Headers. 
 1. Open **Internet Information Services (IIS)** Manager. START > RUN > inetmgr
 2. In the Connections pane on the left side, expand the Sites folder and select the site that you want to protect.
 3. Double-click the **HTTP Response Headers** icon in the feature list in the middle.
