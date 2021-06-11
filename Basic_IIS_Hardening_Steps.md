@@ -4,6 +4,7 @@
   * [Enable X-Frame-Options in IIS.](#enable-x-frame-options-in-iis)
   * [Enable XSS-Protection in IIS.](#enable-xss-protection-in-iis)
   * [Configure Custom Error pages in IIS.](#configure-custom-error-pages-in-iis)
+  * [Implement Secure Reffer Policy](#implement-secure-reffer-policy)
   * [Enable Content-Security-Policy in IIS.](#enable-content-security-policy-in-iis)
   * [Enable Stirct-Transport-Security in IIS.](#enable-stirct-transport-security-in-iis)
   * [Enable X-Content-Type-Options in IIS.](#enable-x-content-type-options-in-iis)
@@ -23,6 +24,9 @@
 - [Host Header Remediation](#host-header-remediation)
 - [Adding Content Security Policy](#adding-content-security-policy)
 - [References:](#references-)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
@@ -83,6 +87,29 @@ One command line for this work to be performed is
 appcmd.exe set config -section:system.webServer/httpErrors /+"[statusCode='404',subStatusCode='5',prefixLanguageFilePath='%SystemDrive%\inetpub\custerr',path='404.5.htm']" 
 /commit:apphost
 ```
+
+
+## Implement Secure Reffer Policy
+The documentation for reffer policy is @ https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy. It should be implemented using HTTP Headers. 
+1. Open **Internet Information Services (IIS)** Manager. START > RUN > inetmgr
+2. In the Connections pane on the left side, expand the Sites folder and select the site that you want to protect.
+3. Double-click the **HTTP Response Headers** icon in the feature list in the middle.
+4. In the Actions pane on the right side, click **Add**.
+5. In the dialog box that appears, type **Referrer-Policy** in the Name field and type **strict-origin-when-cross-origin** in the Value field. One could also choose required values from the documentation provided above.   
+6. Click **OK** to save your changes.
+7. Run **Command line** from Administrator and then issue **"IISRESET"** to restart the IIS
+
+Alternatively, one could choose to edit the relevant Web.Config file add these header. 
+
+<httpProtocol>
+    <customHeaders>
+      <!-- SECURITY HEADERS - https://securityheaders.io/? -->
+      <!-- Protects against Clickjacking attacks. ref.: http://stackoverflow.com/a/22105445/1233379 -->
+      <!-- Protects against MIME-type confusion attack. ref.: https://www.veracode.com/blog/2014/03/guidelines-for-setting-security-headers/ -->
+      <add name="Referrer-Policy" value="strict-origin" />
+    </customHeaders>
+  </httpProtocol>
+</system.webServer>
 
 
 ## Enable Content-Security-Policy in IIS.
