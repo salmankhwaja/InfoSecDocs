@@ -437,8 +437,8 @@ Alternatively, the following snippet of WebConfig can be dropped in related WebC
 <configuration>
     <system.webServer>
         <cors enabled="true" failUnlistedOrigins="true">
-            <add origin="*" />
-            <add origin="https://*.microsoft.com"
+            <add origin="https://daraz.com" />
+            <add origin="https://microsoft.com"
                  allowCredentials="true"
                  maxAge="120"> 
                 <allowHeaders allowAllRequestedHeaders="true">
@@ -446,7 +446,9 @@ Alternatively, the following snippet of WebConfig can be dropped in related WebC
                     <add header="header2" />
                 </allowHeaders>
                 <allowMethods>
-                     <add method="DELETE" />
+                     <add method="POST" />
+                     <add method="GET" />
+                     <add method="OPTIONS" />
                 </allowMethods>
                 <exposeHeaders>
                     <add header="header1" />
