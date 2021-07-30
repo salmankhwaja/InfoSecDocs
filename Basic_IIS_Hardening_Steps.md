@@ -409,12 +409,19 @@ Cross-origin resource sharing (CORS) is a browser mechanism which enables contro
 One could the following CORS headers in IIS and / or webserver of their choice. The following are the types of CORS Headers, which should be used. 
 
   Access-Control-Allow-Origin: http://foo.example
+ 
   Access-Control-Allow-Methods: POST, GET, OPTIONS
+  
   Access-Control-Allow-Headers: X-PINGOTHER, Content-Type
+  
   Access-Control-Max-Age: 86400
+  
   Access-Control-Allow-Credentials: true
+  
   Access-Control-Expose-Headers: None
+  
   Access-Control-Request-Method: POST, GET, OPTIONS
+  
   Access-Control-Request-Headers: X-PINGOTHER, Content-Type
 
 
