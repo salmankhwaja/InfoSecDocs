@@ -10,29 +10,24 @@
   * [Enable X-Content-Type-Options in IIS.](#enable-x-content-type-options-in-iis)
   * [Suppress Web Server in IIS.](#suppress-web-server-in-iis)
   * [Remove ASP.NET Version, Server Verion and Other un wanted headers.](#remove-aspnet-version--server-verion-and-other-un-wanted-headers)
-    + [Remove ASP.NET 4.5](#remove-aspnet-45)
-    + [Disable ASP.NET debug feature (http-asp-dot-net-debug)](#disable-aspnet-debug-feature--http-asp-dot-net-debug-)
-      - [Modify the Web.config File](#modify-the-webconfig-file)
-      - [Modify the Machine.config File](#modify-the-machineconfig-file)
-    + [Removing X-Powered-By Header.](#removing-x-powered-by-header)
+  * [Remove ASP.NET 4.5](#remove-aspnet-45)
+  * [Disable ASP.NET debug feature (http-asp-dot-net-debug)](#disable-aspnet-debug-feature--http-asp-dot-net-debug-)
+  * [Modify the Web.config File](#modify-the-webconfig-file)
+  * [Modify the Machine.config File](#modify-the-machineconfig-file)
+  * [Removing X-Powered-By Header.](#removing-x-powered-by-header)
   * [Disable Default IIS document in IIS.](#disable-default-iis-document-in-iis)
-- [Cookies (Secure only / Http only)](#cookies--secure-only---http-only-)
-- [Secure Cookies with root path](#secure-cookies-with-root-path)
+  * [Cookies (Secure only / Http only)](#cookies--secure-only---http-only-)
+  * [Secure Cookies with root path](#secure-cookies-with-root-path)
   * [Check your headers.](#check-your-headers)
-- [Security Headers](#security-headers)
+  * [Security Headers](#security-headers)
 - [Disable ViewState in Asp.NET Pages](#disable-viewstate-in-aspnet-pages)
-- [Host Header Remediation](#host-header-remediation)
-- [Adding Content Security Policy](#adding-content-security-policy)
+  * [Host Header Remediation](#host-header-remediation)
+  * [Content Security Policy](#content-security-policy)
 - [References:](#references-)
   * [CORS - Cross Origin Resource Sharing.](#cors---cross-origin-resource-sharing)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
-
-<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
-
-
-<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
 
 
@@ -164,19 +159,19 @@ https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
 Detailed instructions provided here. 
 https://blog.insiderattack.net/configuring-secure-iis-response-headers-in-asp-net-mvc-b38369030728
 
-### Remove ASP.NET 4.5
+## Remove ASP.NET 4.5
 1. Open the Web.Config file, 
 2. find the node **<httpRuntime>** under **<system.web>** 
 3. add the **enableVersionHeader** attribute to **httpRuntime** node and set it to **false**.
  
  <httpRuntime maxRequestLength="4096" targetFramework="4.5" enableVersionHeader="false"/>
 
-### Disable ASP.NET debug feature (http-asp-dot-net-debug)
+## Disable ASP.NET debug feature (http-asp-dot-net-debug)
 
 Detailed instructions are @ https://support.microsoft.com/en-us/help/815157/how-to-disable-debugging-for-asp-net-applications
 
 To disable debugging, modify either the **Web.config file** or the **Machine.config file**, as detailed in the following steps.
-#### Modify the Web.config File
+## Modify the Web.config File
 To enable debugging, add the compilation element to the Web.config file of the application. The Web.config file is located in the application directory. To do this, follow these steps:
 
 1. Open the Web.config file in a text editor such as Notepad.exe. Web.config file is typically located in the application directory.
@@ -191,7 +186,7 @@ To enable debugging, add the compilation element to the Web.config file of the a
    ```
 4. Save the Web.config file. The ASP.NET application automatically restarts.
 
-#### Modify the Machine.config File
+## Modify the Machine.config File
 You can also enable debugging for all applications on a system by modifying the Machine.config file. To confirm that debugging has not been enabled in the Machine.config file, follow these steps.
 
 1. Open the Machine.config file in a text editor such as Notepad.exe. The Machine.config file is typically located in the following folder:
@@ -208,7 +203,7 @@ If the debug attribute is true, change the debug attribute to false.
 4. Save the Machine.config file.
 
 
-### Removing X-Powered-By Header.
+## Removing X-Powered-By Header.
 
 1. Open the Web.Config file, 
 2. find the <httpProtocol> node under the <system.webServer> node. 
@@ -234,7 +229,7 @@ From https://www.greytrix.com/blogs/sagecrm/2013/03/29/how-to-restrict-users-fro
 and 
 https://docs.microsoft.com/en-us/iis/web-hosting/web-server-for-shared-hosting/default-documents
 
-# Cookies (Secure only / Http only)
+## Cookies (Secure only / Http only)
 The application cookies needs to be set as SECURE and HttpOnly Flag. The following line is to be added in Web.Config to make the Cookies Secure.
 The line below is quite relaxed, but will make the cookies Secure and HTTPOnly.
 Add this line within Web.config  within <system.web>:
@@ -243,7 +238,7 @@ Add this line within Web.config  within <system.web>:
 <httpCookies httpOnlyCookies="true" requireSSL="true" />
 ```
 
-# Secure Cookies with root path
+## Secure Cookies with root path
 
 Root path is generally added in cookies to make cookies for that particular path / domain. Best approach is to use the path directive and domain directive.
 
@@ -258,7 +253,7 @@ https://headmelted.com/securing-asp-net-cookies-a1e1b1648ed
 
 
 ## Check your headers. 
-lastly check your headers from https://securityheaders.io/. 
+Lastly check your headers from https://securityheaders.io/. 
 
 Read more about it here. 
 
@@ -275,7 +270,7 @@ One could also follow along this link to remove un wanted Server header.
 https://blogs.msdn.microsoft.com/varunm/2013/04/23/remove-unwanted-http-response-headers/
 
 
-# Security Headers
+## Security Headers
 
 Security Headers provide a very powerful way to further harden your Web application. The following Security Headers should be added in your applications Web.Config file. 
 
@@ -317,7 +312,7 @@ Security Headers provide a very powerful way to further harden your Web applicat
  3. ReStart the Webserver by issuing "cmd" from command line and issues "IISRESET" from Administrator command prompt.
  
  
-# Host Header Remediation
+## Host Header Remediation
 Host Header detailed description about what is it and how it is exploited can be seen at the URL. 
 https://www.acunetix.com/blog/articles/automated-detection-of-host-header-attacks/
 
@@ -344,7 +339,7 @@ appcmd set site /site.name:"digicert.com" /+bindings.[protocol='https',bindingIn
 
 
 
-# Adding Content Security Policy
+## Content Security Policy
 Content Security Policy is the header which is applied in applications. With this policy in place, application developers could enable / disable many areas of their Web site to be executed in browser environment. Things like Links, Cross Links, Images, JavaScripts, resources lying in their server and / or in partner's Servers. In other words, it allows to define a policy to run on major browsers, which will be a defense mechanism for Websites. 
 
 More details here. https://content-security-policy.com/
@@ -408,22 +403,21 @@ Cross-origin resource sharing (CORS) is a browser mechanism which enables contro
 
 One could the following CORS headers in IIS and / or webserver of their choice. The following are the types of CORS Headers, which should be used. 
 
-  Access-Control-Allow-Origin: http://foo.example
- 
-  Access-Control-Allow-Methods: POST, GET, OPTIONS
-  
-  Access-Control-Allow-Headers: X-PINGOTHER, Content-Type
-  
-  Access-Control-Max-Age: 86400
-  
-  Access-Control-Allow-Credentials: true
-  
-  Access-Control-Expose-Headers: None
-  
-  Access-Control-Request-Method: POST, GET, OPTIONS
-  
-  Access-Control-Request-Headers: X-PINGOTHER, Content-Type
+  Access-Control-Allow-Origin: http://foo.example 
 
+  Access-Control-Allow-Methods: POST, GET, OPTIONS
+
+  Access-Control-Allow-Headers: X-PINGOTHER, Content-Type
+
+  Access-Control-Max-Age: 86400
+
+  Access-Control-Allow-Credentials: true
+
+  Access-Control-Expose-Headers: None
+
+  Access-Control-Request-Method: POST, GET, OPTIONS
+
+  Access-Control-Request-Headers: X-PINGOTHER, Content-Type
 
 The other options are self explanatory, but Access-Control-Max-Age gives the value in seconds for how long the response to the preflight request can be cached for without sending another preflight request. In this case, 86400 seconds is 24 hours. 
 
