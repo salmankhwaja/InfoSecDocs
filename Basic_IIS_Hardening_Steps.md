@@ -4,7 +4,7 @@
   * [Enable X-Frame-Options in IIS.](#enable-x-frame-options-in-iis)
   * [Enable XSS-Protection in IIS.](#enable-xss-protection-in-iis)
   * [Configure Custom Error pages in IIS.](#configure-custom-error-pages-in-iis)
-  * [Implement Secure Referrer Policy](#implement-secure-Referrer-policy)
+  * [Implement Secure Referrer Policy](#implement-secure-referrer-policy)
   * [Enable Content-Security-Policy in IIS.](#enable-content-security-policy-in-iis)
   * [Enable Stirct-Transport-Security in IIS.](#enable-stirct-transport-security-in-iis)
   * [Enable X-Content-Type-Options in IIS.](#enable-x-content-type-options-in-iis)
@@ -24,6 +24,10 @@
 - [Host Header Remediation](#host-header-remediation)
 - [Adding Content Security Policy](#adding-content-security-policy)
 - [References:](#references-)
+  * [CORS - Cross Origin Resource Sharing.](#cors---cross-origin-resource-sharing)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
@@ -369,8 +373,6 @@ For remediation on IIS, follow the below steps.
 **PS:** Command line for the same is 
 appcmd set site /site.name:"digicert.com" /+bindings.[protocol='https',bindingInformation='*:443:digicert.com']
 
-
-
  
  
  This is how Security headers are added in Code.
@@ -393,8 +395,6 @@ app.UseCsp(opts => opts
  );
  //End Security Headers
 
-
- 
  
  # References:
  https://medium.com/@shehackspurple/security-headers-1c770105940b
@@ -402,3 +402,70 @@ app.UseCsp(opts => opts
  
  
  
+## CORS - Cross Origin Resource Sharing. 
+
+Cross-origin resource sharing (CORS) is a browser mechanism which enables controlled access to resources located outside of a given domain. It extends and adds flexibility to the same-origin policy (SOP). However, it also provides potential for cross-domain based attacks, if a website's CORS policy is poorly configured and implemented. CORS is not a protection against cross-origin attacks such as cross-site request forgery (CSRF).
+
+One could the following CORS headers in IIS and / or webserver of their choice. The following are the types of CORS Headers, which should be used. 
+
+  Access-Control-Allow-Origin: http://foo.example
+  Access-Control-Allow-Methods: POST, GET, OPTIONS
+  Access-Control-Allow-Headers: X-PINGOTHER, Content-Type
+  Access-Control-Max-Age: 86400
+  Access-Control-Allow-Credentials: true
+  Access-Control-Expose-Headers: None
+  Access-Control-Request-Method: POST, GET, OPTIONS
+  Access-Control-Request-Headers: X-PINGOTHER, Content-Type
+
+
+The other options are self explanatory, but Access-Control-Max-Age gives the value in seconds for how long the response to the preflight request can be cached for without sending another preflight request. In this case, 86400 seconds is 24 hours. 
+
+Do the following to add your required CORS Headers in IIS. 
+
+1. Open Internet Information Service (IIS) Manager
+2. Right click the site you want to enable CORS for and go to Properties
+3. Change to the HTTP Headers tab
+4. In the Custom HTTP headers section, click Add
+5. Enter Access-Control-Allow-Origin as the header name
+6. Enter * as the header value
+7. Click Ok twice
+
+Alternatively, the following snippet of WebConfig can be dropped in related WebConfig of IIS. 
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <system.webServer>
+        <cors enabled="true" failUnlistedOrigins="true">
+            <add origin="*" />
+            <add origin="https://*.microsoft.com"
+                 allowCredentials="true"
+                 maxAge="120"> 
+                <allowHeaders allowAllRequestedHeaders="true">
+                    <add header="header1" />
+                    <add header="header2" />
+                </allowHeaders>
+                <allowMethods>
+                     <add method="DELETE" />
+                </allowMethods>
+                <exposeHeaders>
+                    <add header="header1" />
+                    <add header="header2" />
+                </exposeHeaders>
+            </add>
+            <add origin="http://*" allowed="false" />
+        </cors>
+    </system.webServer>
+</configuration>
+```
+
+References, Reading Material is here. 
+
+https://portswigger.net/web-security/cors
+https://portswigger.net/web-security/cors/access-control-allow-origin
+https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
+https://www.w3.org/wiki/CORS_Enabled#For_IIS7
+https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
+https://docs.microsoft.com/en-us/iis/extensions/cors-module/cors-module-configuration-reference
+
+
