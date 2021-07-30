@@ -20,15 +20,13 @@
   * [Secure Cookies with root path](#secure-cookies-with-root-path)
   * [Check your headers.](#check-your-headers)
   * [Security Headers](#security-headers)
-- [Disable ViewState in Asp.NET Pages](#disable-viewstate-in-aspnet-pages)
+  * [Disable ViewState in Asp.NET Pages](#disable-viewstate-in-aspnet-pages)
   * [Host Header Remediation](#host-header-remediation)
   * [Content Security Policy](#content-security-policy)
-- [References:](#references-)
+  * [References:](#references-)
   * [CORS - Cross Origin Resource Sharing.](#cors---cross-origin-resource-sharing)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
-
-
 
 
 # Instructions document for Hardening
@@ -290,7 +288,8 @@ Security Headers provide a very powerful way to further harden your Web applicat
  </httpProtocol>
  <! — End Security Headers →
  ```
-# Disable ViewState in Asp.NET Pages
+
+## Disable ViewState in Asp.NET Pages
 1. Open desired Web.Config file and go to <system.web> tag.
 2. Add the following tag in <system.web>
 
@@ -391,7 +390,7 @@ app.UseCsp(opts => opts
  //End Security Headers
 
  
- # References:
+ ## References:
  https://medium.com/@shehackspurple/security-headers-1c770105940b
  https://damienbod.com/2018/02/08/adding-http-headers-to-improve-security-in-an-asp-net-mvc-core-application/
  
