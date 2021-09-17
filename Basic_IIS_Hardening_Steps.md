@@ -25,6 +25,7 @@
   * [Content Security Policy](#content-security-policy)
   * [References:](#references-)
   * [CORS - Cross Origin Resource Sharing.](#cors---cross-origin-resource-sharing)
+  * [Microsoft IIS Tilde Vulnerability](#microsoft-iis-tilde-vulnerability)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
@@ -459,8 +460,8 @@ Alternatively, the following snippet of WebConfig can be dropped in related WebC
         </cors>
     </system.webServer>
 </configuration>
+                                                  
 ```
-
 References, Reading Material is here. 
 
 https://portswigger.net/web-security/cors
@@ -470,4 +471,13 @@ https://www.w3.org/wiki/CORS_Enabled#For_IIS7
 https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
 https://docs.microsoft.com/en-us/iis/extensions/cors-module/cors-module-configuration-reference
 
-
+                                                  
+                                                  
+## Microsoft IIS Tilde Vulnerability
+This is a very old vulenrability and detailed write up is documented at https://support.detectify.com/support/solutions/articles/48001048944-microsoft-iis-tilde-vulnerability             
+The remidiation is as follows
+                                                  
+1. Discard all web requests using the tilde character 
+1. Open Registry editor by doing START > Run, followed by "RegEdit".
+2. add a registry key named **NtfsDisable8dot3NameCreation** to **HKLM\SYSTEM\CurrentControlSet\Control\FileSystem**. 
+3. Set the value of the key to 1 to mitigate all 8.3 name conventions on the server.
