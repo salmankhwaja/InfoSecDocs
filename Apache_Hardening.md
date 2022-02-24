@@ -3,6 +3,7 @@
 - [Apache Hardening Instructions.](#apache-hardening-instructions)
     + [Add the Popular Security Headers to Apache Server configuration](#add-the-popular-security-headers-to-apache-server-configuration)
     + [Disable HTTP 1.0 Protocol](#disable-http-10-protocol)
+    + [Disable OPTIONS Method in Apache](#Disable-OPTIONS-Method-in-Apache)
     + [Disable Apache server giving our information about which modules are loaded.](#disable-apache-server-giving-our-information-about-which-modules-are-loaded)
     + [Use An Appropriate User and Group](#use-an-appropriate-user-and-group)
     + [Disable Directory Listing in Apache](#disable-directory-listing-in-apache)
@@ -69,6 +70,18 @@ RewriteEngine On
 RewriteCond %{THE_REQUEST} !HTTP/1.1$
 RewriteRule .* - [F]
 ```
+
+### Disable OPTIONS Method in Apache. 
+
+1. Edit the httpd.conf file for the HTTP server.  This is typically in directory /www/<instanceName>/conf/httpd.conf
+2. Add these three lines in the httpd.conf file.
+
+```
+RewriteEngine On
+RewriteCond %{REQUEST_METHOD} ^OPTIONS
+RewriteRule .* - [F]
+```
+
 
 ### Disable Apache server giving our information about which modules are loaded. 
 
