@@ -6,7 +6,7 @@
   * [Configure Custom Error pages in IIS.](#configure-custom-error-pages-in-iis)
   * [Implement Secure Referrer Policy](#implement-secure-referrer-policy)
   * [Enable Content-Security-Policy in IIS.](#enable-content-security-policy-in-iis)
-  * [Enable Stirct-Transport-Security in IIS.](#enable-stirct-transport-security-in-iis)
+  * [Enable Stirct-Transport-Security in IIS. HSTS](#enable-stirct-transport-security-in-iis-hsts)
   * [Enable X-Content-Type-Options in IIS.](#enable-x-content-type-options-in-iis)
   * [Suppress Web Server in IIS.](#suppress-web-server-in-iis)
   * [Remove ASP.NET Version, Server Verion and Other un wanted headers.](#remove-aspnet-version--server-verion-and-other-un-wanted-headers)
@@ -26,6 +26,8 @@
   * [References:](#references-)
   * [CORS - Cross Origin Resource Sharing.](#cors---cross-origin-resource-sharing)
   * [Microsoft IIS Tilde Vulnerability](#microsoft-iis-tilde-vulnerability)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
@@ -126,7 +128,7 @@ https://rehansaeed.com/content-security-policy-for-asp-net-mvc/
 https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
 
 
-## Enable Stirct-Transport-Security in IIS.
+## Enable Stirct-Transport-Security in IIS. HSTS
 1. Open **Internet Information Services (IIS)** Manager. START > RUN > inetmgr
 2. In the Connections pane on the left side, expand the Sites folder and select the site that you want to protect.
 3. Double-click the **HTTP Response Headers** icon in the feature list in the middle.
@@ -135,6 +137,39 @@ https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
 6. Click **OK** to save your changes.
 7. Run **Command line** from Administrator and then issue **"IISRESET"** to restart the IIS
 
+
+Also, the following XML could be added in for Re-Direction from HTTP to HTTPS. 
+
+
+<httpProtocol>
+    <customHeaders>
+      <!-- SECURITY HEADERS - https://securityheaders.io/? -->
+      <!-- Protects against Clickjacking attacks. ref.: http://stackoverflow.com/a/22105445/1233379 -->
+      <!-- Protects against MIME-type confusion attack. ref.: https://www.veracode.com/blog/2014/03/guidelines-for-setting-security-headers/ -->
+      <add name="Referrer-Policy" value="strict-origin" />
+    </customHeaders>
+  </httpProtocol>
+</system.webServer>
+
+
+<system.webServer>
+        <httpRedirect enabled="true" destination="https://MachineName.DomainName.com/URI" httpResponseStatus="Permanent" />
+</system.webServer>
+
+
+
+HSTS Header could also be added in Web.Config
+
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <system.webServer>
+        <httpProtocol>
+            <customHeaders>
+                <add name="Strict-Transport-Security" value="max-age=31536000" />
+            </customHeaders>
+        </httpProtocol>
+    </system.webServer>
+</configuration>
 
 ## Enable X-Content-Type-Options in IIS.
 1. Open **Internet Information Services (IIS)** Manager. START > RUN > inetmgr
