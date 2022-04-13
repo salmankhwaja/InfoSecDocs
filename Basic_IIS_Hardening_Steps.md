@@ -171,6 +171,12 @@ HSTS Header could also be added in Web.Config
     </system.webServer>
 </configuration>
 ```
+Read this link for more information. 
+
+https://docs.microsoft.com/en-us/iis/get-started/whats-new-in-iis-10-version-1709/iis-10-version-1709-hsts#:~:text=HTTP%20Strict%20Transport%20Security%20(HSTS)%2C%20specified%20in%20RFC%206797,contacted%20only%20through%20HTTPS%20connections.
+
+
+
 ## Enable X-Content-Type-Options in IIS.
 1. Open **Internet Information Services (IIS)** Manager. START > RUN > inetmgr
 2. In the Connections pane on the left side, expand the Sites folder and select the site that you want to protect.
