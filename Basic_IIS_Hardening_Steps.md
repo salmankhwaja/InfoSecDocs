@@ -140,7 +140,7 @@ https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
 
 Also, the following XML could be added in for Re-Direction from HTTP to HTTPS. 
 
-
+```
 <httpProtocol>
     <customHeaders>
       <!-- SECURITY HEADERS - https://securityheaders.io/? -->
@@ -150,16 +150,16 @@ Also, the following XML could be added in for Re-Direction from HTTP to HTTPS.
     </customHeaders>
   </httpProtocol>
 </system.webServer>
-
-
+```
+```
 <system.webServer>
         <httpRedirect enabled="true" destination="https://MachineName.DomainName.com/URI" httpResponseStatus="Permanent" />
 </system.webServer>
-
+```
 
 
 HSTS Header could also be added in Web.Config
-
+```
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
     <system.webServer>
@@ -170,7 +170,7 @@ HSTS Header could also be added in Web.Config
         </httpProtocol>
     </system.webServer>
 </configuration>
-
+```
 ## Enable X-Content-Type-Options in IIS.
 1. Open **Internet Information Services (IIS)** Manager. START > RUN > inetmgr
 2. In the Connections pane on the left side, expand the Sites folder and select the site that you want to protect.
