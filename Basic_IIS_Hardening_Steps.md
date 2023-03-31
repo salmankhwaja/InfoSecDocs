@@ -469,7 +469,7 @@ Do the following to add your required CORS Headers in IIS.
 3. Change to the **HTTP Headers** tab
 4. In the Custom HTTP headers section, click **Add**
 5. Enter **Access-Control-Allow-Origin** as the header name
-6. Enter ***** as the header value
+6. Enter *https://domain.url.com*  as the header value. In case of Multiple headers, use the method below of adding in URLs displayed via XML highlighed below.
 7. Click **Ok** twice
 
 Alternatively, the following snippet of WebConfig can be dropped in related WebConfig of IIS. 
