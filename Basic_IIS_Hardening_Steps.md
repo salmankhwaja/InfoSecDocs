@@ -465,12 +465,12 @@ The other options are self explanatory, but Access-Control-Max-Age gives the val
 Do the following to add your required CORS Headers in IIS. 
 
 1. Open Internet Information Service (IIS) Manager
-2. Right click the site you want to enable CORS for and go to Properties
-3. Change to the HTTP Headers tab
-4. In the Custom HTTP headers section, click Add
-5. Enter Access-Control-Allow-Origin as the header name
-6. Enter * as the header value
-7. Click Ok twice
+2. *Right click* the site you want to enable CORS for and go to *Properties*
+3. Change to the *HTTP Headers* tab
+4. In the Custom HTTP headers section, click *Add*
+5. Enter *Access-Control-Allow-Origin* as the header name
+6. Enter *** as the header value
+7. Click *Ok* twice
 
 Alternatively, the following snippet of WebConfig can be dropped in related WebConfig of IIS. 
 
@@ -479,11 +479,13 @@ Alternatively, the following snippet of WebConfig can be dropped in related WebC
 <configuration>
     <system.webServer>
         <cors enabled="true" failUnlistedOrigins="true">
+            <!-- Below is the list of URLs to be documented for allowing the Cross Origin Resource Sharing to be enabled -->
             <add origin="https://daraz.com" />
             <add origin="https://microsoft.com"
                  allowCredentials="true"
                  maxAge="120"> 
                 <allowHeaders allowAllRequestedHeaders="true">
+                    <!-- Below is the list of custom headers to be added in CORS to be enabled -->
                     <add header="header1" />
                     <add header="header2" />
                 </allowHeaders>
